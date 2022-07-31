@@ -5,10 +5,11 @@
     </div>
     <div class="meta">
         {{post.vote_count}} point(s) by {{post.username}} on {{post.created_at}} | 
-        <a href="/post/{{post.id}}">{{post.commennts.length}} comment(s)</a>
+        <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
     </div>
 </article>
 
+{{#if loggedIn}}
 <form class="comment-form">
     <div>
         <textarea name="comment-body"></textarea>
@@ -18,7 +19,8 @@
         <button type="submit">add comment</button>
         <button type="button" class="upvote-btn">upvote</button>
     </div>
-
+</form>
+{{/if}}
     <div class="comments">
         {{#each post.comments}}
         <section class="comment"> 
@@ -31,7 +33,8 @@
         </section>
         {{/each}}
     </div>
-</form>
 
+{{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script>
+{{/if}}
